@@ -13,8 +13,11 @@ public class ForkModule : MonoBehaviour,IForkModule
     [SerializeField] private float minHeight;
     [SerializeField] private float liftSpeed;
 
+    private float temp;
+
     public void Lift(float vertical)
     {
+        temp = vertical;
         leftFork.position += new Vector3(0f, vertical * liftSpeed * Time.deltaTime, 0f);
         rightFork.position += new Vector3(0f, vertical * liftSpeed * Time.deltaTime, 0f);
 
@@ -38,5 +41,14 @@ public class ForkModule : MonoBehaviour,IForkModule
     public void PutDown()
     {
         throw new System.NotImplementedException();
+    }
+
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Box))
+        {
+            Debug.Log(temp);
+            collision.transform.position += new Vector3(0f, temp, 0f);
+        }
     }
 }

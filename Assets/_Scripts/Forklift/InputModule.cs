@@ -43,8 +43,9 @@ public class InputModule : MonoBehaviour
 
     private void GetLiftInput()
     {
-        if (Input.GetKey(KeyCode.J)) { ForkModuleHandler(verticalLift); }
-        if (Input.GetKey(KeyCode.K)) { ForkModuleHandler(-verticalLift); }
+        if (Input.GetKey(KeyCode.J)) { ForkModuleHandler(verticalLift);  return; }
+        if (Input.GetKey(KeyCode.K)) { ForkModuleHandler(-verticalLift); return; }
+        ForkModuleHandler(0.0f);
     }
 
     private void ForkModuleHandler(float verticalDir)
