@@ -4,5 +4,7 @@ using UnityEngine;
 
 public interface IMovementModule
 {
-    void Move(Vector3 dir);
+   void HandleMotor(float verticalInput, bool isBreaking);
+   void HandleSteering(float horizontalInput);
+   void UpdateWheels();
 }

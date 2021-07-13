@@ -5,39 +5,62 @@ using UnityEngine;
 
 public class MovementModule : MonoBehaviour, IMovementModule
 {
-    [SerializeField] private float speed = 10f;
-    [SerializeField] private float turnSpeed;
-    [SerializeField] private float turningPointDistance;
+    [Header("Options")]
+    [SerializeField] private float motorForce;
+    [SerializeField] private float breakForce;
+    [SerializeField] private float maxSteeringAngle;
 
-    private Rigidbody _rb;
+    [Header("Transform Requires")]
+    [SerializeField] private Transform frontLeftTransform;
+    [SerializeField] private Transform frontRightTransform;
+    [SerializeField] private Transform rearLeftTransform;
+    [SerializeField] private Transform rearRightTransform;
 
-    private Vector3 _turningPoint;
+    [Header("Collider Requires")]
+    [SerializeField] private WheelCollider frontLeftlCollider;
+    [SerializeField] private WheelCollider frontRightlCollider;
+    [SerializeField] private WheelCollider rearLeftlCollider;
+    [SerializeField] private WheelCollider rearRightlCollider;
 
-    private void Start()
+    private float _currentSteerAngle;
+    private float _currentBreakForce;
+
+    public void HandleSteering(float horizontalInput)
     {
-        _rb = GetComponent<Rigidbody>();
+        _currentSteerAngle = maxSteeringAngle * horizontalInput;
+        frontLeftlCollider.steerAngle = _currentSteerAngle;
+        frontRightlCollider.steerAngle = _currentSteerAngle;
     }
 
-    private void Update()
+    public void UpdateWheels()
     {
-        CalculateTurningPoint();
+        UpdateSingleWheel(frontLeftlCollider, frontLeftTransform);
+        UpdateSingleWheel(frontRightlCollider, frontRightTransform);
+        UpdateSingleWheel(rearLeftlCollider, rearLeftTransform);
+        UpdateSingleWheel(rearRightlCollider, rearRightTransform);
     }
 
-    private void CalculateTurningPoint()
+    private void UpdateSingleWheel(WheelCollider wheelCollider, Transform wheelTransform)
     {
-        _turningPoint =  -transform.position - transform.right * turningPointDistance * -1;
+        wheelCollider.GetWorldPose(out Vector3 pos, out Quaternion rot);
+        wheelTransform.SetPositionAndRotation(pos, rot);
     }
 
-    public void Move(Vector3 dir)
+    public void HandleMotor(float verticalInput, bool isBreaking)
     {
-        transform.RotateAround(_turningPoint, Vector3.up, turnSpeed * Time.deltaTime * dir.x / turningPointDistance);
-        _rb.MovePosition(transform.position + Time.deltaTime * speed * dir);
+        frontLeftlCollider.motorTorque = verticalInput * motorForce;
+        
+        frontRightlCollider.motorTorque = verticalInput * motorForce;
+        _currentBreakForce = isBreaking ? breakForce : 0f;       
+        ApplyBreaking();
+      
     }
 
-
-    private void OnDrawGizmos()
+    private void ApplyBreaking()
     {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawSphere(_turningPoint + Vector3.up, 0.3f);
+        frontRightlCollider.brakeTorque = _currentBreakForce;
+        frontLeftlCollider.brakeTorque = _currentBreakForce;
+        rearLeftlCollider.brakeTorque = _currentBreakForce;
+        rearRightlCollider.brakeTorque = _currentBreakForce;
     }
 }

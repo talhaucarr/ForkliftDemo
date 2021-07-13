@@ -6,9 +6,10 @@ using UnityEngine;
 public class InputModule : MonoBehaviour
 {
     private IMovementModule _movementModule;
+
     private float _horizontal;
     private float _vertical;
-    private Vector3 _dir;
+    private bool _isBreaking;
 
     void Start()
     {
@@ -16,20 +17,19 @@ public class InputModule : MonoBehaviour
     }
 
     
-    void Update()
+    void FixedUpdate()
     {
-        GetMoveDir();
-        Debug.Log(_dir);
-        _movementModule.Move(_dir);
+        GetInput();
+        _movementModule.HandleMotor(_vertical, _isBreaking);
+        _movementModule.HandleSteering(_horizontal);
+        _movementModule.UpdateWheels();
     }
 
-    private void GetMoveDir()
-    {      
-        _dir = Vector3.zero;
-
-        _dir.z = -1 * Input.GetAxisRaw("Horizontal");
-        _dir.x = -1 * Input.GetAxisRaw("Vertical");
-
-        _dir.Normalize();
+    private void GetInput()
+    {
+        _horizontal = Input.GetAxis("Horizontal");
+        _vertical = Input.GetAxis("Vertical");
+        _isBreaking = Input.GetKey(KeyCode.Space);
+        Debug.Log(_isBreaking);
     }
 }
