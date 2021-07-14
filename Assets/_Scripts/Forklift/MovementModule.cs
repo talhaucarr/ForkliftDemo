@@ -50,7 +50,6 @@ public class MovementModule : MonoBehaviour, IMovementModule
     {
         frontLeftlCollider.motorTorque = verticalInput * motorForce;        
         frontRightlCollider.motorTorque = verticalInput * motorForce;
-        Debug.Log(frontRightlCollider.motorTorque);
         _currentBreakForce = isBreaking ? breakForce : 0f;       
         ApplyBreaking();     
     }

@@ -5,8 +5,7 @@ using UnityEngine;
 public class ForkModule : MonoBehaviour,IForkModule
 {
     [Header("Requires")]
-    [SerializeField] private Transform leftFork;
-    [SerializeField] private Transform rightFork;
+    [SerializeField] private Transform forkLift;
 
     [Header("Options")]
     [SerializeField] private float maxHeight;
@@ -18,18 +17,16 @@ public class ForkModule : MonoBehaviour,IForkModule
     public void Lift(float vertical)
     {
         temp = vertical;
-        leftFork.position += new Vector3(0f, vertical * liftSpeed * Time.deltaTime, 0f);
-        rightFork.position += new Vector3(0f, vertical * liftSpeed * Time.deltaTime, 0f);
+       
+        forkLift.localPosition += new Vector3(0f, vertical * liftSpeed * Time.deltaTime, 0f);
 
-        if (leftFork.position.y > maxHeight)
+        if (forkLift.localPosition.y > maxHeight)
         {
-            leftFork.position = new Vector3(leftFork.position.x, maxHeight, leftFork.position.z);
-            rightFork.position = new Vector3(rightFork.position.x, maxHeight, rightFork.position.z);
+            forkLift.localPosition = new Vector3(forkLift.localPosition.x, maxHeight, forkLift.localPosition.z);
         }
-        if (leftFork.position.y < minHeight)
+        if (forkLift.localPosition.y < minHeight)
         {
-            leftFork.position = new Vector3(leftFork.position.x, minHeight, leftFork.position.z);
-            rightFork.position = new Vector3(rightFork.position.x, minHeight, rightFork.position.z);
+            forkLift.localPosition = new Vector3(forkLift.localPosition.x, minHeight, forkLift.localPosition.z);
         }
     }
 
