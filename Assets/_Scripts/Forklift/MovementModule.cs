@@ -48,12 +48,11 @@ public class MovementModule : MonoBehaviour, IMovementModule
 
     public void HandleMotor(float verticalInput, bool isBreaking)
     {
-        frontLeftlCollider.motorTorque = verticalInput * motorForce;
-        
+        frontLeftlCollider.motorTorque = verticalInput * motorForce;        
         frontRightlCollider.motorTorque = verticalInput * motorForce;
+        Debug.Log(frontRightlCollider.motorTorque);
         _currentBreakForce = isBreaking ? breakForce : 0f;       
-        ApplyBreaking();
-      
+        ApplyBreaking();     
     }
 
     private void ApplyBreaking()
