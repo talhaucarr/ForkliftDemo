@@ -5,10 +5,13 @@ using UnityEngine;
 
 public class InputModule : MonoBehaviour
 {
+    [Header("Options")]
     [SerializeField] private float verticalLift;
+    [SerializeField] private float fuelDecreaseAmount;
 
     private IMovementModule _movementModule;
     private IForkModule _forkModule;
+    private IFuelModule _fuelModule;
 
     private float _horizontal;
     private float _vertical;
@@ -18,6 +21,7 @@ public class InputModule : MonoBehaviour
     {
         _movementModule = GetComponent<MovementModule>();
         _forkModule = GetComponent<ForkModule>();
+        _fuelModule = GetComponent<FuelModule>();
     }
 
     
@@ -25,14 +29,23 @@ public class InputModule : MonoBehaviour
     {
         GetMovementInput();
         GetLiftInput();
+        FuelModuelHandler();
         MovementModuleHandler();
     }
+
+    private void FuelModuelHandler()
+    {
+        if (_vertical != 0 || _horizontal != 0)
+        {
+            _fuelModule.DecreaseFuel(fuelDecreaseAmount);
+        }
+    }
+
     private void GetMovementInput()
     {
         _horizontal = Input.GetAxis("Horizontal");
         _vertical = Input.GetAxis("Vertical");
         _isBreaking = Input.GetKey(KeyCode.Space);
-        Debug.Log(_isBreaking);
     }
     private void MovementModuleHandler()
     {
@@ -43,8 +56,8 @@ public class InputModule : MonoBehaviour
 
     private void GetLiftInput()
     {
-        if (Input.GetKey(KeyCode.J)) { ForkModuleHandler(verticalLift);  return; }
-        if (Input.GetKey(KeyCode.K)) { ForkModuleHandler(-verticalLift); return; }
+        if (Input.GetKey(KeyCode.J)) { ForkModuleHandler(verticalLift);  return; }//Up
+        if (Input.GetKey(KeyCode.K)) { ForkModuleHandler(-verticalLift); return; }//Down
         ForkModuleHandler(0.0f);
     }
 

@@ -525,6 +525,14 @@ PrefabInstance:
       propertyPath: verticalLift
       value: 0.005
       objectReference: {fileID: 0}
+    - target: {fileID: 610768464, guid: a3dc0b97fa55a4943b2e6b5fc23df8dc, type: 3}
+      propertyPath: fuelDecreaseAmount
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 610768464, guid: a3dc0b97fa55a4943b2e6b5fc23df8dc, type: 3}
+      propertyPath: inputFuelDecreaseAmount
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1627289740, guid: a3dc0b97fa55a4943b2e6b5fc23df8dc, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -605,6 +613,21 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 6026452485902012592, guid: a3dc0b97fa55a4943b2e6b5fc23df8dc, type: 3}
   m_PrefabInstance: {fileID: 610768458}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &715539811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 715539810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b5ef60845521e943bcb32185330ced0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxFuel: 100
+  fuelDecreaseAmount: 0
+  curFuel: 0
 --- !u!114 &715539815
 MonoBehaviour:
   m_ObjectHideFlags: 0
