@@ -7,7 +7,9 @@ public enum Tags
     None,
     Box,
     Obstacle,
-    Player
+    Player,
+    Fuel,
+    Enemy
 }
 
 public class Tag : MonoBehaviour

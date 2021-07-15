@@ -7,7 +7,9 @@ public class FuelModule : MonoBehaviour,IFuelModule
 {
     [Header("Options")]
     [SerializeField] private float maxFuel;
+    [SerializeField] private float fuelTankAmount;
     [SerializeField] private float fuelDecreaseAmount;
+
 
     [Header("Monitors")]
     [SerializeField] [ShowOnly] private float curFuel;
