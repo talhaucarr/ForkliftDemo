@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 7235490901364309833}
   - component: {fileID: 7381728505452685672}
   - component: {fileID: 8713076561698740793}
+  - component: {fileID: 2061786120674735036}
+  - component: {fileID: 7375597956415706333}
   m_Layer: 0
   m_Name: Palett
   m_TagString: Untagged
@@ -126,3 +128,29 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &2061786120674735036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731801658567534323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.79678357, y: 0.7087912, z: 6.55069}
+  m_Center: {x: -3.259524, y: 0.3543935, z: 0}
+--- !u!65 &7375597956415706333
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 731801658567534323}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.78880465, y: 0.7087912, z: 6.55069}
+  m_Center: {x: 3.2635124, y: 0.3543935, z: 0}

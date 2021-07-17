@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 795972860569562516}
+  - component: {fileID: 2474369108067001631}
   m_Layer: 0
   m_Name: Shipment3
   m_TagString: Untagged
@@ -33,6 +34,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2474369108067001631
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4674739474607206489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.041072, y: 0.35190448, z: 1.1862335}
+  m_Center: {x: 5.6822114, y: -0.12061112, z: -32.536823}
 --- !u!54 &7204157362786435887
 Rigidbody:
   m_ObjectHideFlags: 0

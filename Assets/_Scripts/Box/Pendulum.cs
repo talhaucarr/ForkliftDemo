@@ -22,7 +22,6 @@ public class Pendulum : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Debug.Log("here");
         _startTime += Time.deltaTime;
         transform.rotation = Quaternion.Lerp(_start, _end, (Mathf.Sin(_startTime * _speed + Mathf.PI / 2) + 1.0f) / 2.0f);
     }
