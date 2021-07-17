@@ -8,6 +8,7 @@ public class DeliveryPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other);
         if (other.gameObject == delivery)
         {
             Debug.Log("ha bu");
