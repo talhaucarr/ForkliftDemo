@@ -12,12 +12,11 @@ public class FuelModule : MonoBehaviour,IFuelModule
     [SerializeField] private float fuelTankAmount;
     [SerializeField] private float fuelDecreaseAmount;
 
-    [Header("UI")]
-    [SerializeField] private TextMeshProUGUI fuelText;
-    [SerializeField] private Image fuelImage;
-
     [Header("Monitors")]
     [SerializeField] [ShowOnly] private float curFuel;
+
+    public float CurFuel { get => curFuel; }
+    public float MaxFuel { get => maxFuel; }
 
     void Start()
     {
@@ -28,14 +27,8 @@ public class FuelModule : MonoBehaviour,IFuelModule
     {
         ControlFuelAmount();
         DecreaseFuel(fuelDecreaseAmount);//motor calistiginda azalmaya basliyor
-        UpdateUI();
     }
 
-    private void UpdateUI()
-    {
-        fuelImage.fillAmount = curFuel / maxFuel;
-        fuelText.text = "Fuel:" + curFuel;
-    }
 
     public void DecreaseFuel(float fuelAmount)
     {

@@ -346,8 +346,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 383289235}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -399,8 +398,8 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 47972166}
-  m_Father: {fileID: 305795382}
-  m_RootOrder: 0
+  m_Father: {fileID: 0}
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -466,7 +465,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 5
   m_TargetDisplay: 0
 --- !u!1 &401069482 stripped
 GameObject:
@@ -1696,6 +1695,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tags: 03000000
+--- !u!114 &1709138980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1709138970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 701262f0ba1228146a8dd7d5f63b1383, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelText: {fileID: 586467548}
+  fuelImage: {fileID: 2134199209}
 --- !u!1 &1762749498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2438,7 +2451,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004248014449014164, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.17
+      value: -1.08
       objectReference: {fileID: 0}
     - target: {fileID: 6004248014449014164, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2446,7 +2459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6004248014449014164, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.62
+      value: -16.24
       objectReference: {fileID: 0}
     - target: {fileID: 6004248014449014164, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2483,6 +2496,10 @@ PrefabInstance:
     - target: {fileID: 6347981374269665058, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
       propertyPath: m_Drag
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6347981374269665058, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
+      propertyPath: m_Mass
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 6347981374269665059, guid: 425f269960ba3e84bad1a01c040664a0, type: 3}
       propertyPath: maxFuel
