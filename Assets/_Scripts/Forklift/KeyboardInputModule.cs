@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InputModule : MonoBehaviour
+public class KeyboardInputModule : MonoBehaviour
 {
     [Header("Options")]
     [SerializeField] private float verticalLift;
@@ -19,12 +19,11 @@ public class InputModule : MonoBehaviour
 
     void Start()
     {
-        _movementModule = GetComponent<MovementModule>();
-        _forkModule = GetComponent<ForkModule>();
-        _fuelModule = GetComponent<FuelModule>();
+        _movementModule = GetComponent<IMovementModule>();
+        _forkModule = GetComponent<IForkModule>();
+        _fuelModule = GetComponent<IFuelModule>();
     }
-
-    
+   
     void FixedUpdate()
     {
         GetMovementInput();
