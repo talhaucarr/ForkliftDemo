@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] public enum CameraMods { SideView, TopView, RearView}
     [SerializeField] public CameraMods CurMode = CameraMods.RearView;
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         CameraInput();
         CameraTranslation();
@@ -31,7 +31,7 @@ public class CameraFollow : MonoBehaviour
     private void CameraTranslation()
     {
         Vector3 targetPosition = target.TransformPoint(offset);
-        transform.position = Vector3.Lerp(transform.position, targetPosition, translateSpeed * Time.deltaTime);
+        transform.position = targetPosition;
     }
 
     private void CameraRotation()

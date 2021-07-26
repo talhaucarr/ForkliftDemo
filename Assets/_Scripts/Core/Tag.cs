@@ -9,7 +9,8 @@ public enum Tags
     Obstacle,
     Player,
     Fuel,
-    Enemy
+    Enemy,
+    MovingPlatform
 }
 
 public class Tag : MonoBehaviour

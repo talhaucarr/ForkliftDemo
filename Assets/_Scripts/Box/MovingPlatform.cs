@@ -11,8 +11,6 @@ public class MovingPlatform : MonoBehaviour
     private int _curPointIndex = 0;
     private List<Transform> _points;
 
-
-
     private void Start()
     {
         _points = pointProvider.GetPointList();
@@ -34,24 +32,6 @@ public class MovingPlatform : MonoBehaviour
         {
             _curPointIndex++;
             if (_curPointIndex == _points.Count) _curPointIndex = 0;
-        }
-    }
-
-    private void OnTriggerStay(Collider other)
-    {
-
-        if (other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Player))
-        {
-            
-
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Player))
-        {
-
         }
     }
 }
