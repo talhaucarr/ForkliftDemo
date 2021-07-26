@@ -483,6 +483,7 @@ GameObject:
   - component: {fileID: 1709138981}
   - component: {fileID: 3373933552605120255}
   - component: {fileID: 1709138980}
+  - component: {fileID: 201103193}
   m_Layer: 0
   m_Name: Forklift
   m_TagString: Untagged
@@ -585,8 +586,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 6.2157493, y: 7.667001, z: 8.165667}
-  m_Center: {x: 0, y: 4.237326, z: -2.3293352}
+  m_Size: {x: 6.2157493, y: 6.534089, z: 8.165667}
+  m_Center: {x: 0, y: 4.803782, z: -2.3293352}
 --- !u!114 &6347981374269665068
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +697,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fuelText: {fileID: 0}
   fuelImage: {fileID: 0}
+--- !u!114 &201103193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6347981374269665070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64be9deb48dc25246aa8e2789a46e6f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cvm: {fileID: 0}
+  CurMode: 2
 --- !u!1 &7069072042316209545
 GameObject:
   m_ObjectHideFlags: 0

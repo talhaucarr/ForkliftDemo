@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class KeyboardInputModule : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class KeyboardInputModule : MonoBehaviour
         _movementModule = GetComponent<IMovementModule>();
         _forkModule = GetComponent<IForkModule>();
         _fuelModule = GetComponent<IFuelModule>();
+        
     }
    
     void FixedUpdate()
@@ -30,6 +32,7 @@ public class KeyboardInputModule : MonoBehaviour
         GetLiftInput();
         FuelModuelHandler();
         MovementModuleHandler();
+
     }
 
     private void FuelModuelHandler()
