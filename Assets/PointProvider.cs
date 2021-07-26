@@ -6,8 +6,14 @@ using UnityEngine;
 using UnityEditor;
 #endif
 
-public class MovingPlatformEditor: MonoBehaviour
+public class PointProvider:  APointProvider
 {
+    [SerializeField] public List<Transform> points;   
+
+    public override List<Transform> GetPointList()
+    {
+        return points;
+    }
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()
@@ -29,20 +35,22 @@ public class MovingPlatformEditor: MonoBehaviour
 }
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(MovingPlatformEditor))]
+[CustomEditor(typeof(PointProvider))]
 [System.Serializable]
-class MovingPlatformEditorS : Editor
+class PointProviderEditor : Editor
 {
     public override void OnInspectorGUI()
     {
-        MovingPlatformEditor script = (MovingPlatformEditor)target;
+        PointProvider script = (PointProvider)target;
         if (GUILayout.Button("GOKAY", GUILayout.MinWidth(100), GUILayout.Width(100)))
         {
             GameObject point = new GameObject();
             point.transform.parent = script.transform;
             point.transform.position = script.transform.position;
             point.name = script.transform.childCount.ToString();
+            script.points.Add(point.transform);
         }
+        base.OnInspectorGUI();
     }
 }
 #endif

@@ -5,49 +5,36 @@ using UnityEngine;
 
 public class MovingPlatform : MonoBehaviour
 {
-    public enum MovingMods { UpDown, RightLeft, ForthBack };
+    [SerializeField] private APointProvider pointProvider;
+    [SerializeField] private float platformSpeed;
 
-    [SerializeField] private float movingDir;
-    [SerializeField] private float movingSpeed;
+    private int _curPointIndex = 0;
+    private List<Transform> _points;
 
-    [SerializeField] private MovingMods curMode = MovingMods.ForthBack;
 
+
+    private void Start()
+    {
+        _points = pointProvider.GetPointList();
+    }
     private void Update()
     {
-        transform.position += new Vector3(0f, 0f, movingDir * movingSpeed * Time.deltaTime);
+        CheckTargetReached();
+        MoveToTarget();
     }
 
-    private void SwitchMovingMode()
+    private void MoveToTarget()
     {
-        switch (curMode)
+        transform.position += platformSpeed * Time.deltaTime * (_points[_curPointIndex].position - transform.position).normalized;
+    }
+
+    private void CheckTargetReached()
+    {
+        if (Vector3.Distance(transform.position, _points[_curPointIndex].position) < 0.01f)
         {
-            case MovingMods.UpDown:
-                UpOrDown(movingDir);
-                break;
-            case MovingMods.RightLeft:
-                RightOrLeft(movingDir);
-                break;
-            case MovingMods.ForthBack:
-                ForthOrBack(movingDir);
-                break;
-            default:
-                break;
+            _curPointIndex++;
+            if (_curPointIndex == _points.Count) _curPointIndex = 0;
         }
-    }
-
-    private void ForthOrBack(float dir)
-    {
-        transform.position += new Vector3(0f, 0f, movingDir * movingSpeed * Time.deltaTime);
-    }
-
-    private void RightOrLeft(float dir)
-    {
-        transform.position += new Vector3(0f, 0f, movingDir * movingSpeed * Time.deltaTime);
-    }
-
-    private void UpOrDown(float dir)
-    {
-        transform.position += new Vector3(0f, 0f, movingDir * movingSpeed * Time.deltaTime);
     }
 
     private void OnTriggerStay(Collider other)
