@@ -5,6 +5,8 @@ using UnityEngine;
 public class TouchInputModule : MonoBehaviour
 {
     [Header("Options")]
+    [SerializeField] private Joystick moveJoystick;
+    [SerializeField] private Joystick liftJoystick;
     [SerializeField] private float verticalLift;
     [SerializeField] private float fuelDecreaseAmount;
 
@@ -40,8 +42,8 @@ public class TouchInputModule : MonoBehaviour
 
     private void GetMovementInput()
     {
-        _horizontal = Input.GetAxis("Horizontal");
-        _vertical = Input.GetAxis("Vertical");
+        _horizontal = moveJoystick.Horizontal;
+        _vertical = moveJoystick.Vertical;
         _isBreaking = Input.GetKey(KeyCode.Space);
     }
     private void MovementModuleHandler()
@@ -53,8 +55,8 @@ public class TouchInputModule : MonoBehaviour
 
     private void GetLiftInput()
     {
-        if (Input.GetKey(KeyCode.J)) { Debug.Log("saJ"); ForkModuleHandler(verticalLift); return; }//Up
-        if (Input.GetKey(KeyCode.K)) { Debug.Log("saK"); ForkModuleHandler(-verticalLift); return; }//Down
+        if (liftJoystick.Vertical >= .2f) { ForkModuleHandler(verticalLift); return; }//Up
+        if (liftJoystick.Vertical <= -.2f) { ForkModuleHandler(-verticalLift); return; }//Down
         ForkModuleHandler(0.0f);
     }
 

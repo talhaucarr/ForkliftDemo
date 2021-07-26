@@ -19,15 +19,20 @@ public class CameraOffsetModule : MonoBehaviour
 
     private void LateUpdate()
     {
-        CameraInput();
+        SwitchCameraMode();
     }
 
-    private void CameraInput()
+    public void CameraSideView()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) { CurMode = CameraMods.RearView; }//input module koyamadim??
-        if (Input.GetKeyDown(KeyCode.Alpha2)) { CurMode = CameraMods.SideView; }
-        if (Input.GetKeyDown(KeyCode.Alpha3)) { CurMode = CameraMods.TopView; }
-        SwitchCameraMode();
+        CurMode = CameraMods.SideView;
+    }
+    public void CameraRearView()
+    {
+        CurMode = CameraMods.RearView;
+    }
+    public void CameraTopView()
+    {
+        CurMode = CameraMods.TopView;
     }
 
     public void SwitchCameraMode()
