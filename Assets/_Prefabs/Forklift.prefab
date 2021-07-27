@@ -694,7 +694,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcc355577de035348bb1281f5e151f4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  joystick: {fileID: 0}
+  moveJoystick: {fileID: 0}
+  liftJoystick: {fileID: 0}
   verticalLift: 0.01
   fuelDecreaseAmount: 0.5
 --- !u!1 &7069072042316209545

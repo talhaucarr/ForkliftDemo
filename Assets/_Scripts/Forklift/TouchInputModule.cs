@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TouchInputModule : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class TouchInputModule : MonoBehaviour
     [SerializeField] private Joystick liftJoystick;
     [SerializeField] private float verticalLift;
     [SerializeField] private float fuelDecreaseAmount;
+    [SerializeField] private Button handbreakeButton;
+    [SerializeField] private Color colorssss;
 
     private IMovementModule _movementModule;
     private IForkModule _forkModule;
@@ -17,6 +20,8 @@ public class TouchInputModule : MonoBehaviour
     private float _horizontal;
     private float _vertical;
     private bool _isBreaking;
+
+    private float _handbreakeFlag = -1; //-1 Off - 1 On
 
     void Start()
     {
@@ -44,8 +49,32 @@ public class TouchInputModule : MonoBehaviour
     {
         _horizontal = moveJoystick.Horizontal;
         _vertical = moveJoystick.Vertical;
-        _isBreaking = Input.GetKey(KeyCode.Space);
     }
+
+    public void Handbreake()
+    {
+        _isBreaking = SwitchHanbreakeFlag();
+    }
+
+    public bool SwitchHanbreakeFlag()
+    {
+        _handbreakeFlag *= -1;
+        if(_handbreakeFlag == 1) 
+        {
+            ColorBlock cb = handbreakeButton.colors;
+            cb.normalColor = Color.green;
+            handbreakeButton.colors = cb;
+            return true; 
+        }
+        else 
+        {
+            ColorBlock cb = handbreakeButton.colors;
+            cb.normalColor = Color.red;
+            handbreakeButton.colors = cb;
+            return false; 
+        }
+    }
+
     private void MovementModuleHandler()
     {
         _movementModule.HandleMotor(_vertical, _isBreaking);
