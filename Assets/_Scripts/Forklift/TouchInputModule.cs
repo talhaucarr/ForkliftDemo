@@ -63,6 +63,8 @@ public class TouchInputModule : MonoBehaviour
         {
             ColorBlock cb = handbreakeButton.colors;
             cb.normalColor = Color.green;
+            cb.highlightedColor = new Color32(0, 243, 11, 255);
+            cb.selectedColor = new Color32(0,243,11,255);
             handbreakeButton.colors = cb;
             return true; 
         }
@@ -70,14 +72,17 @@ public class TouchInputModule : MonoBehaviour
         {
             ColorBlock cb = handbreakeButton.colors;
             cb.normalColor = Color.red;
+            cb.highlightedColor = new Color32(255, 0, 0, 255);
+            cb.selectedColor = new Color32(255, 0, 0, 255);
             handbreakeButton.colors = cb;
+            
             return false; 
         }
     }
 
     private void MovementModuleHandler()
     {
-        _movementModule.HandleMotor(_vertical, _isBreaking);
+        //_movementModule.HandleMotor(_vertical, _isBreaking);
         _movementModule.HandleSteering(_horizontal);
         _movementModule.UpdateWheels();
     }
