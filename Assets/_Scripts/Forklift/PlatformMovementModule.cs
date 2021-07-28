@@ -5,15 +5,24 @@ using UnityEngine;
 public class PlatformMovementModule : MonoBehaviour
 {
     [SerializeField] private Transform centerOfMass;
+    
 
     private Vector3 _lastPlatformPosition;
     private MovingPlatform _curPlatform;
+    private Rigidbody _rb;
+    
+
+    private void Start()
+    {
+        _rb = GetComponent<Rigidbody>();
+    }
 
     private void Update()
     {
         if (!_curPlatform) { return; }
-
-        transform.position = transform.position + (_curPlatform.transform.position - _lastPlatformPosition);
+        
+        _rb.velocity = _curPlatform.test + (_curPlatform.transform.position - _lastPlatformPosition);
+        //transform.position = transform.position + (_curPlatform.transform.position - _lastPlatformPosition);
         _lastPlatformPosition = _curPlatform.transform.position;
     }
 

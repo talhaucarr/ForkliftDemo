@@ -9,7 +9,7 @@ public class CenterOfMassCollider : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         
-        if (other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.MovingPlatform))
+        if (other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.MovingPlatform) || other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Box))
         {
             _pmm.EnteredPlatform(other.GetComponent<MovingPlatform>());
         }
@@ -17,7 +17,7 @@ public class CenterOfMassCollider : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.MovingPlatform))
+        if (other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.MovingPlatform) || other.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Box))
         {
             _pmm.LeftPlatform(other.GetComponent<MovingPlatform>());
         }

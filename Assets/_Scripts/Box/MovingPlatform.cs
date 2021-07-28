@@ -10,9 +10,13 @@ public class MovingPlatform : MonoBehaviour
 
     private int _curPointIndex = 0;
     private List<Transform> _points;
+    private Rigidbody _rb;
+
+    public Vector3 test;
 
     private void Start()
     {
+        _rb = GetComponent<Rigidbody>();
         _points = pointProvider.GetPointList();
     }
     private void Update()
@@ -23,7 +27,9 @@ public class MovingPlatform : MonoBehaviour
 
     private void MoveToTarget()
     {
-        transform.position += platformSpeed * Time.deltaTime * (_points[_curPointIndex].position - transform.position).normalized;
+        _rb.velocity = platformSpeed * Time.deltaTime * (_points[_curPointIndex].position - transform.position).normalized;
+        test = _rb.velocity;
+        //transform.position += platformSpeed * Time.deltaTime * (_points[_curPointIndex].position - transform.position).normalized;
     }
 
     private void CheckTargetReached()

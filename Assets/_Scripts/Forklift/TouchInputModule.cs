@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class TouchInputModule : MonoBehaviour
 {
@@ -10,8 +11,10 @@ public class TouchInputModule : MonoBehaviour
     [SerializeField] private Joystick liftJoystick;
     [SerializeField] private float verticalLift;
     [SerializeField] private float fuelDecreaseAmount;
+    [SerializeField] private Button gasButton;
+    [SerializeField] private Button breakeButton;
     [SerializeField] private Button handbreakeButton;
-    [SerializeField] private Color colorssss;
+
 
     private IMovementModule _movementModule;
     private IForkModule _forkModule;
@@ -22,6 +25,8 @@ public class TouchInputModule : MonoBehaviour
     private bool _isBreaking;
 
     private float _handbreakeFlag = -1; //-1 Off - 1 On
+
+    
 
     void Start()
     {
@@ -82,10 +87,16 @@ public class TouchInputModule : MonoBehaviour
 
     private void MovementModuleHandler()
     {
-        //_movementModule.HandleMotor(_vertical, _isBreaking);
         _movementModule.HandleSteering(_horizontal);
         _movementModule.UpdateWheels();
     }
+
+    public void gasPedal()
+    {
+        Debug.Log("gas");
+        _movementModule.HandleMotor(1.0f, _isBreaking);
+        
+    }  
 
     private void GetLiftInput()
     {
@@ -98,5 +109,4 @@ public class TouchInputModule : MonoBehaviour
     {
         _forkModule.Lift(verticalDir);
     }
-
 }
