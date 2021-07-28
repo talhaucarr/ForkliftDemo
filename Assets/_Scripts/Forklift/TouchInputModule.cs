@@ -12,7 +12,7 @@ public class TouchInputModule : MonoBehaviour
     [SerializeField] private float verticalLift;
     [SerializeField] private float fuelDecreaseAmount;
     [SerializeField] private Button gasButton;
-    [SerializeField] private Button breakeButton;
+    //[SerializeField] private Button breakeButton;
     [SerializeField] private Button handbreakeButton;
 
 
@@ -24,9 +24,10 @@ public class TouchInputModule : MonoBehaviour
     private float _vertical;
     private bool _isBreaking;
 
-    private float _handbreakeFlag = -1; //-1 Off - 1 On
+    private bool _isGas = false;
 
-    
+    private float _handbreakeFlag = -1; //-1 Off - 1 On
+   
 
     void Start()
     {
@@ -40,6 +41,9 @@ public class TouchInputModule : MonoBehaviour
         GetLiftInput();
         FuelModuelHandler();
         MovementModuleHandler();
+        if (_isGas) { _movementModule.HandleMotor(1.0f, _isBreaking); }
+        else { _movementModule.HandleMotor(.0f, _isBreaking); }
+        
     }
 
     private void FuelModuelHandler()
@@ -56,47 +60,12 @@ public class TouchInputModule : MonoBehaviour
         _vertical = moveJoystick.Vertical;
     }
 
-    public void Handbreake()
-    {
-        _isBreaking = SwitchHanbreakeFlag();
-    }
-
-    public bool SwitchHanbreakeFlag()
-    {
-        _handbreakeFlag *= -1;
-        if(_handbreakeFlag == 1) 
-        {
-            ColorBlock cb = handbreakeButton.colors;
-            cb.normalColor = Color.green;
-            cb.highlightedColor = new Color32(0, 243, 11, 255);
-            cb.selectedColor = new Color32(0,243,11,255);
-            handbreakeButton.colors = cb;
-            return true; 
-        }
-        else 
-        {
-            ColorBlock cb = handbreakeButton.colors;
-            cb.normalColor = Color.red;
-            cb.highlightedColor = new Color32(255, 0, 0, 255);
-            cb.selectedColor = new Color32(255, 0, 0, 255);
-            handbreakeButton.colors = cb;
-            
-            return false; 
-        }
-    }
-
     private void MovementModuleHandler()
     {
+        
         _movementModule.HandleSteering(_horizontal);
         _movementModule.UpdateWheels();
     }
-
-    public void gasPedal()
-    {
-        Debug.Log("gas");
-        _movementModule.HandleMotor(1.0f, _isBreaking);
-        
-    }  
 
     private void GetLiftInput()
     {
@@ -108,5 +77,44 @@ public class TouchInputModule : MonoBehaviour
     private void ForkModuleHandler(float verticalDir)
     {
         _forkModule.Lift(verticalDir);
+    }
+    public void GasButtonUp()
+    {
+        Debug.Log("up");
+        _isGas = false;
+    }
+    public void GasButtonDown()
+    {
+        Debug.Log("down");
+        _isGas = true;
+    }
+
+    public void Handbreake()
+    {
+        _isBreaking = SwitchHanbreakeFlag();
+    }
+
+    public bool SwitchHanbreakeFlag()
+    {
+        _handbreakeFlag *= -1;
+        if (_handbreakeFlag == 1)
+        {
+            ColorBlock cb = handbreakeButton.colors;
+            cb.normalColor = Color.green;
+            cb.highlightedColor = new Color32(0, 243, 11, 255);
+            cb.selectedColor = new Color32(0, 243, 11, 255);
+            handbreakeButton.colors = cb;
+            return true;
+        }
+        else
+        {
+            ColorBlock cb = handbreakeButton.colors;
+            cb.normalColor = Color.red;
+            cb.highlightedColor = new Color32(255, 0, 0, 255);
+            cb.selectedColor = new Color32(255, 0, 0, 255);
+            handbreakeButton.colors = cb;
+
+            return false;
+        }
     }
 }
