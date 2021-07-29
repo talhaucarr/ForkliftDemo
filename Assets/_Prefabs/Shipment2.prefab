@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5036605581406678672}
   - component: {fileID: 2354278070855722223}
+  - component: {fileID: 1776096654}
   m_Layer: 0
   m_Name: Shipment2
   m_TagString: Untagged
@@ -42,12 +43,25 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1012819288707461981}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: ceaea0da59ed28849a1fb5d99ca5ee30, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.041072, y: 0.35190448, z: 1.1862335}
   m_Center: {x: 5.6822114, y: -0.12061112, z: -32.536823}
+--- !u!114 &1776096654
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1012819288707461981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be61b28ad4f74be4e87983879597b9bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tags: 01000000
 --- !u!54 &3248236615520321579
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -71,6 +85,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5036605581406678672}
     m_Modifications:
+    - target: {fileID: 1013228064074849299, guid: a8cf860427b3f2e49a7c593a86cd268f, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ceaea0da59ed28849a1fb5d99ca5ee30, type: 2}
     - target: {fileID: 8516539941805374705, guid: a8cf860427b3f2e49a7c593a86cd268f, type: 3}
       propertyPath: m_Name
       value: Barrel_01
@@ -185,6 +203,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Palett
       objectReference: {fileID: 0}
+    - target: {fileID: 7235490901364309833, guid: a4db35aee5557ea4795ccca09a1bedc6, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ceaea0da59ed28849a1fb5d99ca5ee30, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4db35aee5557ea4795ccca09a1bedc6, type: 3}
 --- !u!4 &299126089578544248 stripped
@@ -247,6 +269,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Carton_01
       objectReference: {fileID: 0}
+    - target: {fileID: 3862643045764070450, guid: 27e4effa687a01a49ba56a68436ffac1, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ceaea0da59ed28849a1fb5d99ca5ee30, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 27e4effa687a01a49ba56a68436ffac1, type: 3}
 --- !u!1 &3742338125632727742 stripped
@@ -266,6 +292,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5036605581406678672}
     m_Modifications:
+    - target: {fileID: 3673649721409574596, guid: 6b0ee4a1ac3b2394e88158800ec90495, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: ceaea0da59ed28849a1fb5d99ca5ee30, type: 2}
     - target: {fileID: 7158904695118786999, guid: 6b0ee4a1ac3b2394e88158800ec90495, type: 3}
       propertyPath: m_Name
       value: Carton_02
