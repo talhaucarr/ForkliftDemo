@@ -56,8 +56,10 @@ public class FuelModule : MonoBehaviour,IFuelModule
         return curFuel >= 0 ? true : false;
     }
 
+
     private void Death()
     {
         Destroy(gameObject);
+        Application.LoadLevel(Application.loadedLevel);
     }
 }
