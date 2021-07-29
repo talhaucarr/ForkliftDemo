@@ -54,6 +54,12 @@ public class MovementModule : MonoBehaviour, IMovementModule
         ApplyBreaking();     
     }
 
+    public void HandleBreake(float breakeForce)
+    {
+        _currentBreakForce = breakeForce;
+        ApplyBreaking();
+    }
+
     private void ApplyBreaking()
     {
         frontRightlCollider.brakeTorque = _currentBreakForce;

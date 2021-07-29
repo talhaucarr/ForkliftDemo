@@ -11,9 +11,8 @@ public class TouchInputModule : MonoBehaviour
     [SerializeField] private Joystick liftJoystick;
     [SerializeField] private float verticalLift;
     [SerializeField] private float fuelDecreaseAmount;
-    [SerializeField] private Button gasButton;
-    //[SerializeField] private Button breakeButton;
     [SerializeField] private Button handbreakeButton;
+    [SerializeField] private float breakeForce;
 
 
     private IMovementModule _movementModule;
@@ -22,9 +21,10 @@ public class TouchInputModule : MonoBehaviour
 
     private float _horizontal;
     private float _vertical;
-    private bool _isBreaking;
+    private bool _isHandbreake;
 
     private bool _isGas = false;
+    private bool _isBreake = false;
 
     private float _handbreakeFlag = -1; //-1 Off - 1 On
    
@@ -41,9 +41,19 @@ public class TouchInputModule : MonoBehaviour
         GetLiftInput();
         FuelModuelHandler();
         MovementModuleHandler();
-        if (_isGas) { _movementModule.HandleMotor(1.0f, _isBreaking); }
-        else { _movementModule.HandleMotor(.0f, _isBreaking); }
+        if (_isGas) { GasPedal(1.0f); return; }
+        if(_isBreake) { BreakePedal(breakeForce); return; }
+        else { GasPedal(.0f); }
         
+    }
+
+    private void GasPedal(float torque)
+    {
+        _movementModule.HandleMotor(torque, _isHandbreake);
+    }
+    private void BreakePedal(float breakeForce)
+    {
+        _movementModule.HandleBreake(breakeForce);
     }
 
     private void FuelModuelHandler()
@@ -80,18 +90,24 @@ public class TouchInputModule : MonoBehaviour
     }
     public void GasButtonUp()
     {
-        Debug.Log("up");
         _isGas = false;
     }
     public void GasButtonDown()
     {
-        Debug.Log("down");
         _isGas = true;
+    }
+    public void BreakeButtonUp()
+    {     
+        _isBreake = false;
+    }
+    public void BreakeButtonDown()
+    {
+        _isBreake = true;
     }
 
     public void Handbreake()
     {
-        _isBreaking = SwitchHanbreakeFlag();
+        _isHandbreake = SwitchHanbreakeFlag();
     }
 
     public bool SwitchHanbreakeFlag()
