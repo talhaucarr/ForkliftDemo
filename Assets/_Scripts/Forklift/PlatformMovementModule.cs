@@ -20,8 +20,8 @@ public class PlatformMovementModule : MonoBehaviour
     private void Update()
     {
         if (!_curPlatform) { return; }
-        
-        _rb.velocity = _curPlatform.test + (_curPlatform.transform.position - _lastPlatformPosition);
+
+        _rb.velocity += (_curPlatform.transform.position - _lastPlatformPosition);
         //transform.position = transform.position + (_curPlatform.transform.position - _lastPlatformPosition);
         _lastPlatformPosition = _curPlatform.transform.position;
     }

@@ -28,7 +28,6 @@ public class TouchInputModule : MonoBehaviour
 
     private float _handbreakeFlag = -1; //-1 Off - 1 On
    
-
     void Start()
     {
         _movementModule = GetComponent<IMovementModule>();

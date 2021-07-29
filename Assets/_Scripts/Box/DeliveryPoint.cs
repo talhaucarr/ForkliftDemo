@@ -8,10 +8,11 @@ public class DeliveryPoint : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other);
         if (other.gameObject == delivery)
         {
-            Debug.Log("ha bu");
+            Debug.Log("burada");
+            Destroy(other.gameObject);
+            Destroy(this.gameObject);
         }
     }
 }
