@@ -6,7 +6,6 @@ public class PlatformMovementModule : MonoBehaviour
 {
     [SerializeField] private Transform centerOfMass;
     
-
     private Vector3 _lastPlatformPosition;
     private MovingPlatform _curPlatform;
     private Rigidbody _rb;
@@ -22,7 +21,6 @@ public class PlatformMovementModule : MonoBehaviour
         if (!_curPlatform) { return; }
 
         _rb.velocity += (_curPlatform.transform.position - _lastPlatformPosition);
-        //transform.position = transform.position + (_curPlatform.transform.position - _lastPlatformPosition);
         _lastPlatformPosition = _curPlatform.transform.position;
     }
 

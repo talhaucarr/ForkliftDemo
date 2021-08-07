@@ -59,7 +59,6 @@ public class FuelModule : MonoBehaviour,IFuelModule
 
     private void Death()
     {
-        Destroy(gameObject);
-        Application.LoadLevel(Application.loadedLevel);
+        SceneManager.Instance.RestartScene();
     }
 }

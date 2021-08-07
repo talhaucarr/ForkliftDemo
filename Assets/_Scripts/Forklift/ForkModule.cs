@@ -44,7 +44,6 @@ public class ForkModule : MonoBehaviour,IForkModule
     {
         if (collision.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Box))
         {
-            Debug.Log(temp);
             collision.transform.position += new Vector3(0f, temp, 0f);
         }
     }

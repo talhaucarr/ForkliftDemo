@@ -42,7 +42,7 @@ class PointProviderEditor : Editor
     public override void OnInspectorGUI()
     {
         PointProvider script = (PointProvider)target;
-        if (GUILayout.Button("GOKAY", GUILayout.MinWidth(100), GUILayout.Width(100)))
+        if (GUILayout.Button("Create Point", GUILayout.MinWidth(100), GUILayout.Width(100)))
         {
             GameObject point = new GameObject();
             point.transform.parent = script.transform;

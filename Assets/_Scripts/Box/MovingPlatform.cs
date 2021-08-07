@@ -29,7 +29,6 @@ public class MovingPlatform : MonoBehaviour
     {
         _rb.velocity = platformSpeed * Time.deltaTime * (_points[_curPointIndex].position - transform.position).normalized;
         test = _rb.velocity;
-        //transform.position += platformSpeed * Time.deltaTime * (_points[_curPointIndex].position - transform.position).normalized;
     }
 
     private void CheckTargetReached()

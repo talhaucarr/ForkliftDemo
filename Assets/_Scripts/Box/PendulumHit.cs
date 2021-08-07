@@ -8,8 +8,7 @@ public class PendulumHit : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<Tag>().Tags.Contains(Tags.Player))
         {
-            //TODO: game end.
-            Destroy(collision.gameObject);
+            SceneManager.Instance.RestartScene();
         }
     }
 }

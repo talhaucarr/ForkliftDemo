@@ -33,9 +33,8 @@ public class Pendulum : MonoBehaviour
 
     private Quaternion PendulumRotation(float angle)
     {
-        var pendulumRotation = transform.rotation;
-        var angleZ = pendulumRotation.eulerAngles.z + angle;
-
+        Quaternion pendulumRotation = transform.rotation;
+        float angleZ = pendulumRotation.eulerAngles.z + angle;
         if(angleZ > 180) { angleZ -= 360; }
         else if(angleZ < -180) { angleZ += 360; }
 
